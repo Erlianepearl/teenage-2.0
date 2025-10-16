@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Weight She Carries</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Merriweather:wght@300;400;700&display=swap');
+    
+    :root {
+      --primary-color: #FF6B8B;
+      --secondary-color: #FFB6C1;
+      --light-bg: #FFF0F5;
+      --dark-text: #4A2C2C;
+      --accent-color: #FFD1DC;
+      --shadow: 0 4px 12px rgba(255, 105, 180, 0.1);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Nunito', 'Open Sans', sans-serif;
+      line-height: 1.8;
+      color: var(--dark-text);
+      background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%);
+      min-height: 100vh;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #FF6B8B, #FF8FAB);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      margin: 1rem 0 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+      position: relative;
+      overflow: hidden;
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hashtags {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .hashtags span {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin: 0 5px;
+      display: inline-block;
+    }
+    
+    .image-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .film-image {
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      border: 2px solid white;
+      margin: 0 10px;
+    }
+
+    .film-image:hover {
+      transform: scale(1.05);
+    }
+
+    .still-container {
+      display: inline-block;
+      margin: 0 5px;
+    }
+
+    .image-gallery {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 1rem 0;
+    }
+
+    .film-stills .hashtags {
+      margin-top: 1.5rem;
+      padding: 0.5rem 0;
+      border-top: 1px dashed var(--primary-color);
+    }
+
+    .film-stills .hashtags span {
+      margin: 0 8px;
+      font-size: 0.9rem;
+    }
+    
+    section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border-top: 4px solid var(--primary-color);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.15);
+    }
+    
+    h2 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--secondary-color);
+    }
+    
+    p {
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      color: #4a4a4a;
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+      margin: 1.2rem 0;
+    }
+    
+    li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    li::before {
+      content: '•';
+      color: var(--primary-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    
+    em {
+      font-style: italic;
+      color: #666;
+    }
+    
+    strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    footer {
+      background: linear-gradient(135deg, #FF6B8B, #FF8FAB);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin: 3rem 0 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+    }
+    
+    .heart {
+      color: #FF2E63;
+      animation: heartbeat 1.5s infinite;
+      display: inline-block;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      .image-gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .film-image {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Weight She Carries</h1>
+    <p><em>A film about teenage pregnancy</em></p>
+  </header>
+
+  <section class="film-stills">
+    <div class="image-gallery">
+      <div class="still-container">
+        <img src="images/344634be-aa7e-4297-96b5-f8e63ff253b7.jpg" alt="Film Still 1" class="film-image">
+      </div>
+      <div class="still-container">
+        <img src="images/c4f8ce7c-2d11-4578-a6fe-4e12845a7577.jpg" alt="Film Still 2" class="film-image">
+      </div>
+    </div>
+    <div class="hashtags" style="margin-top: 1rem; text-align: center;">
+      <span>#TeenPregnancyAwareness</span>
+      <span>#UnseenUnfolding</span>
+      <span>#EchoesOfNow</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Description of the Movie</h2>
+    <p>
+      The movie follows the story of a 15-year-old girl who feels unloved by her parents. 
+      Longing for attention, she seeks it from her boyfriend, and their relationship 
+      eventually turns intimate. This leads to her becoming pregnant at a very young age. 
+      Expecting her boyfriend to stand by her, she is devastated when he pressures her 
+      to abort the baby and then abandons her when she refuses. Hoping to find support, 
+      she confides in her mother, but instead of comfort, she is told to also end the pregnancy. 
+      Despite being left alone and pressured by both her boyfriend and her mother, she remains 
+      firm in her decision to keep her baby, facing the heavy consequences of her choice.
+    </p>
+  </section>
+
+  <section>
+    <h2>Target Audience</h2>
+    <p>
+      We believe this film is important for teenagers, parents, teachers, and community 
+      members. Teenagers can relate to the challenges of seeking love and acceptance, 
+      while adults can see how crucial their role is in providing guidance, care, 
+      and understanding to the youth.
+    </p>
+  </section>
+
+  <section>
+    <h2>Impact</h2>
+    <p>
+      <em>The Weight She Carries</em> aims to raise awareness about the 
+      struggles of teenage pregnancy. By sharing this story, we hope to encourage people 
+      to be more compassionate, to break the stigma, and to open conversations that can 
+      help prevent similar situations in real life.
+    </p>
+  </section>
+
+  <section>
+    <h2>Learning & Prevention</h2>
+    <p>
+      As a group, we have learned that teenage pregnancy is not just about the choices of 
+      the young person involved, but also about the support—or lack of support—from family 
+      and society. To help and prevent these situations, we believe it is important to:
+    </p>
+    <ul>
+      <li>Encourage open and honest communication between parents and children.</li>
+      <li>Educate teenagers about relationships, responsibility, and reproductive health.</li>
+      <li>Promote self-worth and self-love, so that teens do not seek validation in harmful ways.</li>
+      <li>Provide counseling and emotional support for those facing unplanned pregnancies.</li>
+      <li>Work as a community to create a safe, understanding environment for young people.</li>
+    </ul>
+  </section>
+ 
+  <section>
+    <h2>About the Movie (Group's Perspective)</h2>
+    <p>
+      As a group, we learned that teenage pregnancy is not just about mistakes or decisions, 
+      but about the absence of understanding and care that could have prevented the situation. 
+      We realized the importance of open communication between parents and children, 
+      the value of making responsible choices, and the need for a supportive environment 
+      where young people can feel safe to share their struggles. 
+    </p>
+    <p>
+      The lesson we take from this film is that every teenager deserves love, guidance, 
+      and acceptance from their family and community, so they do not feel forced to seek it 
+      elsewhere in unhealthy ways.
+    </p>
+  </section>
+
+  <section>
+    <h2>Credits</h2>
+    <p><strong>Produced by:</strong> Grade 11 Block 4 — Section Molbog</p>
+  </section>
+
+  <footer>
+    <p>Made with <span class="heart">❤</span> by Grade 11 Block 4 — Section Molbog</p>
+    <p>&copy; 2025 The Weight She Carries - For Educational Purposes Only</p>
+  </footer>
+</body>
+</html>
